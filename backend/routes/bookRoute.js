@@ -28,7 +28,7 @@ router.post('/', async (request, response) => {
   }
 });
 
-// Route for Get All Books from db
+// Route for Getting all books from db
 router.get('/', async (request, response) => {
   try {
     const books = await Book.find({});
@@ -43,7 +43,7 @@ router.get('/', async (request, response) => {
   }
 });
 
-// Route for Get one book from db by id
+// Route for Getting one book from db by id
 router.get('/:id', async (request, response) => {
   try {
     const { id } = request.params;
@@ -56,7 +56,7 @@ router.get('/:id', async (request, response) => {
   }
 });
 
-// Route for Update a book
+// Route for Updating a book
 router.put('/:id', async (request, response) => {
   try {
     // Check book validation
@@ -80,7 +80,7 @@ router.put('/:id', async (request, response) => {
   }
 });
 
-// Route for Delete a book
+// Route for Deleting a book
 router.delete('/:id', async (request, response) => {
   try {
     const { id } = request.params;

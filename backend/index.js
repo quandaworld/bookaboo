@@ -1,5 +1,5 @@
 import express from "express";
-import { PORT, mongoDBURL } from "./config.js";
+import { PORT, mongoDbUrl } from "./config.js";
 import mongoose from "mongoose";
 import bookRoute from "./routes/bookRoute.js";
 
@@ -20,7 +20,7 @@ app.use('/books', bookRoute);
 
 // Connecting to db
 mongoose
-  .connect(mongoDBURL)
+  .connect(mongoDbUrl)
   .then(() => {
     console.log('App connected to database');
 
