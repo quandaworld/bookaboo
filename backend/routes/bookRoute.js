@@ -7,9 +7,9 @@ const router = express.Router();
 router.post('/', async (request, response) => {
   try {
     // Check book validation
-    if (!request.body.title || !request.body.author || !request.body.pages) {
+    if (!request.body.title || !request.body.author || !request.body.pages || !request.body.status) {
       return response.status(400).send({
-        message: 'Send all required fields: title, author, pages',
+        message: 'Send all required fields: title, author, pages, status',
       })
     }
 
@@ -17,6 +17,7 @@ router.post('/', async (request, response) => {
       title: request.body.title,
       author: request.body.author,
       pages: request.body.pages,
+      status: request.body.status,
     };
 
     const book = await Book.create(newBook);
@@ -60,9 +61,9 @@ router.get('/:id', async (request, response) => {
 router.put('/:id', async (request, response) => {
   try {
     // Check book validation
-    if (!request.body.title || !request.body.author || !request.body.pages) {
+    if (!request.body.title || !request.body.author || !request.body.pages || !request.body.status) {
       return response.status(400).send({
-        message: 'Send all required fields: title, author, pages',
+        message: 'Send all required fields: title, author, pages, status',
       })
     }
 
