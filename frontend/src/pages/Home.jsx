@@ -3,6 +3,8 @@ import axios from 'axios';
 import Spinner from '../components/Spinner';
 import { Link } from 'react-router-dom';
 import { MdOutlineAddBox } from 'react-icons/md';
+import { BiSolidGridAlt } from 'react-icons/bi';
+import { PiListBulletsFill } from "react-icons/pi";
 import BooksGrid from '../components/home/BooksGrid';
 import BooksTable from '../components/home/BooksTable';
 
@@ -29,26 +31,21 @@ const Home = () => {
 
   return (
     <div className='p-4'>
-      <div className='flex justify-center items-center gap-x-4'>
-        <button
-          className='bg-sky-300 hover:bg-sky-600 hover:text-white px-4 py-1 rounded-lg'
-          onClick={() => setShowType('table')}
-        >
-          Table
-        </button>
-        <button
-          className='bg-sky-300 hover:bg-sky-600 hover:text-white px-4 py-1 rounded-lg'
-          onClick={() => setShowType('cards')}
-        >
-          Cards
-        </button>
-      </div>
-
-      <div className='flex justify-between items-center'>
+      <div className='p-1 flex justify-between items-center'>
         <h1 className='text-3xl my-8'>My Library Pro</h1>
-        <Link to='/books/add'>
-          <MdOutlineAddBox className='text-sky-800 text-4xl' />
-        </Link>
+        <div className='flex items-center gap-1 text-sky-800 text-4xl'>
+          <PiListBulletsFill
+            className='cursor-pointer'
+            onClick={() => setShowType('table')}
+          />
+          <BiSolidGridAlt
+            className='cursor-pointer'
+            onClick={() => setShowType('grid')}
+          />
+          <Link to='/books/add'>
+            <MdOutlineAddBox />
+          </Link>
+        </div>
       </div>
 
       {loading ? <Spinner /> : showType === 'table' ? <BooksTable books={books} /> : <BooksGrid books={books} />}
