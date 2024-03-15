@@ -41,6 +41,10 @@ const ShowBook = () => {
             <span>{book.author}</span>
           </div>
           <div className='my-4'>
+            <span className='text-xl mr-4 text-gray-500'>Format</span>
+            <span>{book.format}</span>
+          </div>
+          <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Pages</span>
             <span>{book.pages}</span>
           </div>
@@ -55,6 +59,10 @@ const ShowBook = () => {
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Last Updated</span>
             <span>{new Date(book.updatedAt).toString()}</span>
+          </div>
+          <div className='my-4'>
+            <span className='text-xl mr-4 text-gray-500'>Notes</span>
+            <span>{book.notes}</span>
           </div>
         </div>
       )}

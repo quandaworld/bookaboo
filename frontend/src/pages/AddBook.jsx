@@ -7,8 +7,10 @@ import { useNavigate } from 'react-router-dom';
 const AddBook = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const [format, setFormat] = useState('');
   const [pages, setPages] = useState('');
   const [status, setStatus] = useState('');
+  const [notes, setNotes] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -16,8 +18,10 @@ const AddBook = () => {
     const data = {
       title,
       author,
+      format,
       pages,
       status,
+      notes,
     };
     setLoading(true);
     axios
@@ -58,6 +62,19 @@ const AddBook = () => {
           />
         </div>
         <div className='my-4'>
+          <label className='text-xl mr-4 text-gray-500'>Format</label>
+          <select
+            value={format}
+            onChange={(e) => setFormat(e.target.value)}
+            className='border-2 border-gray-500 px-4 py-2 w-full'
+          >
+            <option disabled={true} value=''>Choose an option</option>
+            <option value='Printed'>Printed</option>
+            <option value='Ebook'>Ebook</option>
+            <option value='Audio'>Audio</option>
+          </select>
+        </div>
+        <div className='my-4'>
           <label className='text-xl mr-4 text-gray-500'>Pages</label>
           <input
             type='number'
@@ -78,6 +95,14 @@ const AddBook = () => {
             <option value='Reading'>Reading</option>
             <option value='Finished'>Finished</option>
           </select>
+        </div>
+        <div className='my-4'>
+          <label className='text-xl mr-4 text-gray-500'>Notes</label>
+          <textarea
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            className='border-2 border-gray-500 px-4 py-2 w-full h-52'
+          />
         </div>
         <button className='p-2 bg-sky-300 m-8 rounded-lg' onClick={handleSaveBook}>
           Save

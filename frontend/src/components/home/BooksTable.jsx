@@ -11,8 +11,9 @@ const BooksTable = ({ books }) => {
           <th className='border border-slate-600 rounded-md'>No</th>
           <th className='border border-slate-600 rounded-md'>Title</th>
           <th className='border border-slate-600 rounded-md max-md:hidden'>Author</th>
+          <th className='border border-slate-600 rounded-md max-md:hidden'>Format</th>
           <th className='border border-slate-600 rounded-md max-md:hidden'>Pages</th>
-          <th className='border border-slate-600 rounded-md'>Status</th>
+          <th className='border border-slate-600 rounded-md max-md:hidden'>Status</th>
           <th className='border border-slate-600 rounded-md'>Actions</th>
         </tr>
       </thead>
@@ -29,9 +30,12 @@ const BooksTable = ({ books }) => {
               {book.author}
             </td>
             <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
+              {book.format}
+            </td>
+            <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
               {book.pages}
             </td>
-            <td className='border border-slate-700 rounded-md text-center'>
+            <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
               {book.status}
             </td>
             <td className='border border-slate-700 rounded-md text-center'>
