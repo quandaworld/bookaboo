@@ -46,7 +46,7 @@ const Home = () => {
 
       <div className='flex justify-between items-center'>
         <h1 className='text-3xl my-8'>My Library Pro</h1>
-        <Link to='/books/create'>
+        <Link to='/books/add'>
           <MdOutlineAddBox className='text-sky-800 text-4xl' />
         </Link>
       </div>
