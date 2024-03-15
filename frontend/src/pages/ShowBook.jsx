@@ -26,12 +26,12 @@ const ShowBook = () => {
   return (
     <div className='p-4'>
       <BackButton />
-      <h1 className='text-3xl my-4'>Show Book</h1>
+      <h1 className='text-3xl text-center my-4'>Show Book</h1>
 
       {loading ? (
         <Spinner />
       ) : (
-        <div className='flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4'>
+        <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Title</span>
             <span>{book.title}</span>
