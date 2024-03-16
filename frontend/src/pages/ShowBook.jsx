@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import BackButton from '../components/BackButton';
+import HomeButton from '../components/HomeButton';
 import Spinner from '../components/Spinner';
 
 const ShowBook = () => {
@@ -25,7 +25,7 @@ const ShowBook = () => {
 
   return (
     <div className='p-4'>
-      <BackButton />
+      <HomeButton />
       <h1 className='text-3xl text-center mb-6'>{book.title}</h1>
 
       {loading ? (

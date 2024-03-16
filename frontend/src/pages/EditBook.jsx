@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import BackButton from '../components/BackButton';
+import HomeButton from '../components/HomeButton';
 import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -59,7 +59,7 @@ const EditBook = () => {
 
   return (
     <div className='p-4'>
-      <BackButton />
+      <HomeButton />
       <h1 className='text-3xl text-center mb-6'>Edit Book</h1>
       <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] px-4 mx-auto'>
         <div className='my-4'>
