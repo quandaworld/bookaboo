@@ -44,7 +44,7 @@ const AddBook = () => {
       {loading ? <Spinner /> : ''}
       <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
         <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Title</label>
+          <label className='text-lg mr-4 text-gray-500'>Title</label>
           <input
             type='text'
             value={title}
@@ -53,7 +53,7 @@ const AddBook = () => {
           />
         </div>
         <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Author</label>
+          <label className='text-lg mr-4 text-gray-500'>Author</label>
           <input
             type='text'
             value={author}
@@ -62,7 +62,7 @@ const AddBook = () => {
           />
         </div>
         <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Format</label>
+          <label className='text-lg mr-4 text-gray-500'>Format</label>
           <select
             value={format}
             onChange={(e) => setFormat(e.target.value)}
@@ -75,7 +75,7 @@ const AddBook = () => {
           </select>
         </div>
         <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Pages</label>
+          <label className='text-lg mr-4 text-gray-500'>Pages</label>
           <input
             type='number'
             value={pages}
@@ -84,7 +84,7 @@ const AddBook = () => {
           />
         </div>
         <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Status</label>
+          <label className='text-lg mr-4 text-gray-500'>Status</label>
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
@@ -97,14 +97,14 @@ const AddBook = () => {
           </select>
         </div>
         <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Notes</label>
+          <label className='text-lg mr-4 text-gray-500'>Notes</label>
           <textarea
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             className='border-2 border-gray-500 px-4 py-2 w-full h-52'
           />
         </div>
-        <button className='p-2 bg-sky-300 m-8 rounded-lg' onClick={handleSaveBook}>
+        <button className='p-2 bg-sky-300 m-8 rounded-lg text-lg' onClick={handleSaveBook}>
           Save
         </button>
       </div>

@@ -31,37 +31,37 @@ const ShowBook = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
+        <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto text-lg' >
           <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Title</span>
+            <span className='mr-4 text-gray-500'>Title</span>
             <span>{book.title}</span>
           </div>
           <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Author</span>
+            <span className='mr-4 text-gray-500'>Author</span>
             <span>{book.author}</span>
           </div>
           <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Format</span>
+            <span className='mr-4 text-gray-500'>Format</span>
             <span>{book.format}</span>
           </div>
           <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Pages</span>
+            <span className='mr-4 text-gray-500'>Pages</span>
             <span>{book.pages}</span>
           </div>
           <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Status</span>
+            <span className='mr-4 text-gray-500'>Status</span>
             <span>{book.status}</span>
           </div>
           <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Date Added</span>
+            <span className='mr-4 text-gray-500'>Date Added</span>
             <span>{new Date(book.createdAt).toString()}</span>
           </div>
           <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Last Updated</span>
+            <span className='mr-4 text-gray-500'>Last Updated</span>
             <span>{new Date(book.updatedAt).toString()}</span>
           </div>
           <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Notes</span>
+            <span className='mr-4 text-gray-500'>Notes</span>
             <span>{book.notes}</span>
           </div>
         </div>
