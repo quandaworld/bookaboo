@@ -8,6 +8,7 @@ import { PiListBulletsFill } from 'react-icons/pi';
 import BooksGrid from '../components/home/BooksGrid';
 import BooksTable from '../components/home/BooksTable';
 
+
 const Home = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -19,7 +20,6 @@ const Home = () => {
     axios
       .get('http://localhost:5555/books')
       .then((response) => {
-        console.log(response.data);
         setBooks(response.data.data);
         setLoading(false);
       })
