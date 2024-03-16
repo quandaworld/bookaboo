@@ -3,7 +3,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 const BookModal = ({ book, index, onClose }) => {
   return (
     <div
-      className='fixed bg-black/10 top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center'
+      className='fixed bg-black/75 top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center'
       onClick={onClose}
     >
       <div
