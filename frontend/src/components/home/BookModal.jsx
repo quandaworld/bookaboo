@@ -8,7 +8,7 @@ const BookModal = ({ book, index, onClose }) => {
     >
       <div
         onClick={(event) => event.stopPropagation()}
-        className='w-[600px] max-w-full bg-white rounded-xl p-4 relative text-start'
+        className='w-[600px] max-w-full bg-white rounded-xl p-7 relative text-start'
       >
         <AiOutlineClose
           className='absolute right-4 top-4 text-3xl text-red-600 cursor-pointer'
@@ -37,11 +37,11 @@ const BookModal = ({ book, index, onClose }) => {
         </div>
         <div className='my-4'>
           <span className='mr-4 text-gray-500'>Date Added</span>
-          <span>{new Date(book.createdAt).toString()}</span>
+          <span>{new Date(book.createdAt).toLocaleString()}</span>
         </div>
         <div className='my-4'>
           <span className='mr-4 text-gray-500'>Last Updated</span>
-          <span>{new Date(book.updatedAt).toString()}</span>
+          <span>{new Date(book.updatedAt).toLocaleString()}</span>
         </div>
         <div className='my-4'>
           <span className='mr-4 text-gray-500'>Notes</span>

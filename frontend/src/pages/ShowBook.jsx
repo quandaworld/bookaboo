@@ -50,11 +50,11 @@ const ShowBook = () => {
           </div>
           <div className='my-4'>
             <span className='mr-4 text-gray-500'>Date Added</span>
-            <span>{new Date(book.createdAt).toString()}</span>
+            <span>{new Date(book.createdAt).toLocaleString()}</span>
           </div>
           <div className='my-4'>
             <span className='mr-4 text-gray-500'>Last Updated</span>
-            <span>{new Date(book.updatedAt).toString()}</span>
+            <span>{new Date(book.updatedAt).toLocaleString()}</span>
           </div>
           <div className='my-4'>
             <span className='mr-4 text-gray-500'>Notes</span>
