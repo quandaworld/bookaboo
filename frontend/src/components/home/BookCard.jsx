@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { BiShow } from 'react-icons/bi';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { IoInformationCircleOutline } from 'react-icons/io5';
 import { MdOutlineDelete } from 'react-icons/md';
