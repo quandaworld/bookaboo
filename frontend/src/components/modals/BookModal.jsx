@@ -1,4 +1,4 @@
-import { FaWindowClose } from 'react-icons/fa';
+import { IoClose } from "react-icons/io5";
 
 const BookModal = ({ book, index, onClose }) => {
   return (
@@ -11,10 +11,10 @@ const BookModal = ({ book, index, onClose }) => {
         className='w-[600px] max-w-full bg-white rounded-xl p-7 relative text-start'
       >
         <div className='flex justify-between'>
-          <h2 className='w-fit px-3 py-1 bg-red-300 rounded-md'>
+          <h2 className='w-fit px-3 py-1 bg-sky-200 rounded-md font-semibold text-sky-900'>
             {`No. ${index + 1}`}
           </h2>
-          <FaWindowClose
+          <IoClose
             className='text-3xl text-red-600 cursor-pointer'
             onClick={onClose}
           />

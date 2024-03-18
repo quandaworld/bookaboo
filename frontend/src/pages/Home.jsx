@@ -32,18 +32,19 @@ const Home = () => {
   return (
     <div className='p-4 font-montserrat'>
       <div className='p-1 flex justify-between items-center'>
-        <h1 className='text-3xl my-8 font-semibold'>My Library Pro</h1>
-        <div className='flex items-center gap-1 text-sky-800 text-4xl'>
+        <h1 className='text-4xl my-8 font-semibold text-sky-900'>My Library Pro</h1>
+        <div className='flex items-center gap-0.5 text-sky-800'>
           <PiListBulletsFill
-            className='cursor-pointer'
+            className='cursor-pointer text-3xl hover:text-sky-700'
             onClick={() => setShowType('table')}
           />
           <BiSolidGridAlt
-            className='cursor-pointer'
+            className='cursor-pointer text-3xl hover:text-sky-700'
             onClick={() => setShowType('grid')}
           />
           <Link to='/books/add'>
-            <MdOutlineAddBox />
+            {/* <MdOutlineAddBox /> */}
+            <button className='bg-sky-800 text-white rounded-lg px-3 py-2 text-lg font-semibold ml-5 hover:bg-sky-700'>Add new book</button>
           </Link>
         </div>
       </div>

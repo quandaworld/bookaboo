@@ -64,7 +64,7 @@ const EditBook = () => {
     <div className='p-4 font-montserrat'>
       <HomeButton />
       <h1 className='text-3xl text-center mb-6 font-semibold'>Edit Book</h1>
-      <div className='flex flex-col border-2 border-blue-400 rounded-xl w-[600px] px-4 mx-auto'>
+      <div className='flex flex-col border-2 border-sky-800 rounded-xl w-[600px] px-4 mx-auto'>
         <div className='my-4'>
           <label className='text-lg mr-4 text-gray-500'>Title</label>
           <input
@@ -126,7 +126,7 @@ const EditBook = () => {
             className='border-2 border-gray-500 px-4 py-2 w-full h-40'
           />
         </div>
-        <button className='p-2 bg-blue-400 m-6 rounded-lg text-lg text-white font-medium' onClick={handleEditBook}>
+        <button className='p-2 bg-sky-800 m-6 rounded-lg text-lg text-white font-medium' onClick={handleEditBook}>
           Save
         </button>
       </div>
