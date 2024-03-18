@@ -1,6 +1,5 @@
 import { FaWindowClose } from 'react-icons/fa';
 
-
 const BookModal = ({ book, index, onClose }) => {
   return (
     <div
@@ -11,13 +10,16 @@ const BookModal = ({ book, index, onClose }) => {
         onClick={(event) => event.stopPropagation()}
         className='w-[600px] max-w-full bg-white rounded-xl p-7 relative text-start'
       >
-        <FaWindowClose
-          className='absolute right-3 top-3 text-3xl text-red-600 cursor-pointer'
-          onClick={onClose}
-        />
-        <h2 className='w-fit px-4 py-1 bg-red-300 rounded-md'>
-          {`No ${index + 1}`}
-        </h2>
+        <div className='flex justify-between'>
+          <h2 className='w-fit px-3 py-1 bg-red-300 rounded-md'>
+            {`No. ${index + 1}`}
+          </h2>
+          <FaWindowClose
+            className='text-3xl text-red-600 cursor-pointer'
+            onClick={onClose}
+          />
+        </div>
+        
         <h4 className='my-5 text-xl font-semibold text-center'>{book.title}</h4>
 
         <div className='my-4'>
@@ -44,11 +46,10 @@ const BookModal = ({ book, index, onClose }) => {
           <span className='mr-4 text-gray-500'>Last Updated</span>
           <span>{new Date(book.updatedAt).toLocaleString()}</span>
         </div>
-        <div className='my-4'>
+        <div className='mt-4'>
           <span className='mr-4 text-gray-500'>Notes</span>
           <span>{book.notes}</span>
         </div>
-
       </div>
     </div>
   );
