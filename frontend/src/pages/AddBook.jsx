@@ -3,6 +3,7 @@ import HomeButton from '../components/HomeButton';
 import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 
 const AddBook = () => {
   const [title, setTitle] = useState('');
@@ -13,6 +14,7 @@ const AddBook = () => {
   const [notes, setNotes] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleSaveBook = () => {
     const data = {
@@ -28,11 +30,12 @@ const AddBook = () => {
       .post('http://localhost:5555/books', data)
       .then(() => {
         setLoading(false);
+        enqueueSnackbar('Book added successfully', { variant: 'success' });
         navigate('/');
       })
       .catch((error) => {
         setLoading(false);
-        alert('An error happened. Please check console');
+        enqueueSnackbar('Please fill out all required fields', { variant: 'error' });
         console.log(error);
       });
   };
@@ -44,7 +47,10 @@ const AddBook = () => {
       {loading ? <Spinner /> : ''}
       <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] px-4 mx-auto'>
         <div className='my-4'>
-          <label className='text-lg mr-4 text-gray-500'>Title</label>
+          <label className='text-lg mr-4 text-gray-500'>
+            Title
+            <span className='italic text-sm'> (required)</span>
+          </label>
           <input
             type='text'
             value={title}
@@ -53,7 +59,9 @@ const AddBook = () => {
           />
         </div>
         <div className='my-4'>
-          <label className='text-lg mr-4 text-gray-500'>Author</label>
+          <label className='text-lg mr-4 text-gray-500'>
+            Author
+            <span className='italic text-sm'> (required)</span></label>
           <input
             type='text'
             value={author}
@@ -62,7 +70,10 @@ const AddBook = () => {
           />
         </div>
         <div className='my-4'>
-          <label className='text-lg mr-4 text-gray-500'>Format</label>
+          <label className='text-lg mr-4 text-gray-500'>
+            Format
+            <span className='italic text-sm'> (required)</span>
+          </label>
           <select
             value={format}
             onChange={(e) => setFormat(e.target.value)}
@@ -75,7 +86,10 @@ const AddBook = () => {
           </select>
         </div>
         <div className='my-4'>
-          <label className='text-lg mr-4 text-gray-500'>Pages</label>
+          <label className='text-lg mr-4 text-gray-500'>
+            Pages
+            <span className='italic text-sm'> (required)</span>
+          </label>
           <input
             type='number'
             value={pages}
@@ -84,7 +98,10 @@ const AddBook = () => {
           />
         </div>
         <div className='my-4'>
-          <label className='text-lg mr-4 text-gray-500'>Status</label>
+          <label className='text-lg mr-4 text-gray-500'>
+            Status
+            <span className='italic text-sm'> (required)</span>
+          </label>
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
