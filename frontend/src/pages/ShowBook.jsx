@@ -24,14 +24,14 @@ const ShowBook = () => {
   }, [])
 
   return (
-    <div className='p-4'>
+    <div className='p-4 font-montserrat'>
       <HomeButton />
-      <h1 className='text-3xl text-center mb-6'>{book.title}</h1>
+      <h1 className='text-3xl text-center mb-6 font-semibold'>{book.title}</h1>
 
       {loading ? (
         <Spinner />
       ) : (
-        <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] px-4 mx-auto text-lg' >
+        <div className='flex flex-col border-2 border-blue-400 rounded-xl w-[600px] px-4 mx-auto text-lg' >
           <div className='my-4'>
             <span className='mr-4 text-gray-500'>Author</span>
             <span>{book.author}</span>

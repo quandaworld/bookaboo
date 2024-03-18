@@ -41,7 +41,7 @@ const AddBook = () => {
   };
 
   return (
-    <div className='p-4'>
+    <div className='p-4 font-montserrat'>
       <HomeButton />
       <h1 className='text-3xl text-center mb-6'>Add Book</h1>
       {loading ? <Spinner /> : ''}

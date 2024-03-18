@@ -30,9 +30,9 @@ const Home = () => {
   }, []);
 
   return (
-    <div className='p-4'>
+    <div className='p-4 font-montserrat'>
       <div className='p-1 flex justify-between items-center'>
-        <h1 className='text-3xl my-8'>My Library Pro</h1>
+        <h1 className='text-3xl my-8 font-semibold'>My Library Pro</h1>
         <div className='flex items-center gap-1 text-sky-800 text-4xl'>
           <PiListBulletsFill
             className='cursor-pointer'

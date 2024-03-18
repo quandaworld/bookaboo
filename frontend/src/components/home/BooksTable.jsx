@@ -11,13 +11,13 @@ const BooksTable = ({ books }) => {
     <table className='w-full border-separate border-spacing-2'>
       <thead>
         <tr>
-          <th className='border border-slate-600 rounded-md'>No.</th>
-          <th className='border border-slate-600 rounded-md'>Title</th>
-          <th className='border border-slate-600 rounded-md max-md:hidden'>Author</th>
-          <th className='border border-slate-600 rounded-md max-md:hidden'>Format</th>
-          <th className='border border-slate-600 rounded-md max-md:hidden'>Pages</th>
-          <th className='border border-slate-600 rounded-md max-md:hidden'>Status</th>
-          <th className='border border-slate-600 rounded-md'>Actions</th>
+          <th className='border border-slate-600 rounded-md font-semibold'>No.</th>
+          <th className='border border-slate-600 rounded-md font-semibold'>Title</th>
+          <th className='border border-slate-600 rounded-md font-semibold max-md:hidden'>Author</th>
+          <th className='border border-slate-600 rounded-md font-semibold max-md:hidden'>Format</th>
+          <th className='border border-slate-600 rounded-md font-semibold max-md:hidden'>Pages</th>
+          <th className='border border-slate-600 rounded-md font-semibold max-md:hidden'>Status</th>
+          <th className='border border-slate-600 rounded-md font-semibold'>Actions</th>
         </tr>
       </thead>
       <tbody>
