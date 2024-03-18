@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { AiOutlineEdit } from 'react-icons/ai';
-import { IoInformationCircleOutline } from 'react-icons/io5';
-import { MdOutlineDelete } from 'react-icons/md';
+import { FiEdit } from "react-icons/fi";
+import { ImInfo } from "react-icons/im";
+import { CgTrash } from "react-icons/cg";
 import { useState } from 'react';
 import BookModal from '../modals/BookModal';
 import DeleteModal from '../modals/DeleteModal';
@@ -18,14 +18,14 @@ const BookCard = ({ book, index }) => {
         </h2>
 
         <div className='flex justify-between items-center gap-x-2'>
-          <IoInformationCircleOutline
-            className='text-2xl text-green-800 cursor-pointer'
+          <ImInfo
+            className='text-xl text-green-700 cursor-pointer'
             onClick={() => setShowBookModal(true)}
           />
           <Link to={`/books/edit/${book._id}`}>
-            <AiOutlineEdit className='text-2xl text-yellow-600' />
+            <FiEdit className='text-xl text-yellow-500' />
           </Link>
-          <MdOutlineDelete
+          <CgTrash
             className='text-2xl text-red-600 cursor-pointer'
             onClick={() => setShowDeleteModal(true)}
           />

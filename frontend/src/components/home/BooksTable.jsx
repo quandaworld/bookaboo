@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AiOutlineEdit } from 'react-icons/ai';
-import { IoInformationCircleOutline } from 'react-icons/io5';
-import { MdOutlineDelete } from 'react-icons/md';
+import { CgTrash } from "react-icons/cg";
+import { FiEdit } from "react-icons/fi";
+import { ImInfo } from "react-icons/im";
 
 const BooksTable = ({ books }) => {
   const [showModal, setShowModal] = useState(false);
@@ -46,13 +46,13 @@ const BooksTable = ({ books }) => {
             <td className='rounded-md text-center'>
               <div className='flex justify-center items-center gap-x-4'>
                 <Link to={`/books/details/${book._id}`}>
-                  <IoInformationCircleOutline className='text-2xl text-green-800' />
+                  <ImInfo className='text-xl text-green-700' />
                 </Link>
                 <Link to={`/books/edit/${book._id}`}>
-                  <AiOutlineEdit className='text-2xl text-yellow-600' />
+                  <FiEdit className='text-xl text-yellow-500' />
                 </Link>
                 <Link to={`/books/delete/${book._id}`}>
-                  <MdOutlineDelete className='text-2xl text-red-600' />
+                  <CgTrash className='text-2xl text-red-600' />
                 </Link>
               </div>
             </td>
