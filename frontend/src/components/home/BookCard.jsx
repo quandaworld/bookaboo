@@ -25,15 +25,18 @@ const BookCard = ({ book, index }) => {
           <Link to={`/books/edit/${book._id}`}>
             <FiEdit className='text-xl text-yellow-500' />
           </Link>
-          <CgTrash
+          <Link to={`/books/delete/${book._id}`}>
+            <CgTrash className='text-2xl text-red-600' />
+          </Link>
+          {/* <CgTrash
             className='text-2xl text-red-600 cursor-pointer'
             onClick={() => setShowDeleteModal(true)}
-          />
+          /> */}
         </div>
-
-        {showBookModal && <BookModal book={book} index={index} onClose={() => setShowBookModal(false)} />}
-        {showDeleteModal && <DeleteModal book={book} index={index} onClose={() => setShowDeleteModal(false)} />}
       </div>
+      {showBookModal && <BookModal book={book} index={index} onClose={() => setShowBookModal(false)} />}
+      {showDeleteModal && <DeleteModal book={book} index={index} onClose={() => setShowDeleteModal(false)} />}
+
       <div className='mt-4'>
         <span className='mr-4 text-gray-500'>Title</span>
         <span>{book.title}</span>
