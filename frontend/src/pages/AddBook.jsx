@@ -55,7 +55,7 @@ const AddBook = () => {
             type='text'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className='border-2 border-gray-400 px-4 py-2 w-full'
+            className='border border-gray-400 px-4 py-2 w-full'
           />
         </div>
         <div className='my-4'>
@@ -66,7 +66,7 @@ const AddBook = () => {
             type='text'
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
-            className='border-2 border-gray-400 px-4 py-2 w-full '
+            className='border border-gray-400 px-4 py-2 w-full '
           />
         </div>
         <div className='my-4'>
@@ -77,7 +77,7 @@ const AddBook = () => {
           <select
             value={format}
             onChange={(e) => setFormat(e.target.value)}
-            className='border-2 border-gray-400 px-4 py-2 w-full'
+            className='border border-gray-400 px-4 py-2 w-full'
           >
             <option disabled={true} value=''>Choose an option</option>
             <option value='Printed'>Printed</option>
@@ -94,7 +94,7 @@ const AddBook = () => {
             type='number'
             value={pages}
             onChange={(e) => setPages(e.target.value)}
-            className='border-2 border-gray-400 px-4 py-2 w-full '
+            className='border border-gray-400 px-4 py-2 w-full '
           />
         </div>
         <div className='my-4'>
@@ -105,7 +105,7 @@ const AddBook = () => {
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-            className='border-2 border-gray-400 px-4 py-2 w-full'
+            className='border border-gray-400 px-4 py-2 w-full'
           >
             <option disabled={true} value=''>Choose an option</option>
             <option value='Unread'>Unread</option>
@@ -118,7 +118,7 @@ const AddBook = () => {
           <textarea
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            className='border-2 border-gray-400 px-4 py-2 w-full h-40'
+            className='border border-gray-400 px-4 py-2 w-full h-40'
           />
         </div>
         <button className='p-2 m-6 w-full bg-sky-800 rounded-lg text-lg self-center font-medium text-white' onClick={handleSaveBook}>
