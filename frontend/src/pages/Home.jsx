@@ -42,7 +42,6 @@ const Home = () => {
               onClick={() => setShowType('grid')}
             />
             <Link to='/books/add'>
-              {/* <MdOutlineAddBox /> */}
               <button className='bg-sky-800 text-white rounded-lg px-3 py-2 text-lg font-semibold ml-5 hover:bg-sky-700'>Add new book</button>
             </Link>
           </div>
