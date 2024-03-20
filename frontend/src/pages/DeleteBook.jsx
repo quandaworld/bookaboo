@@ -32,7 +32,7 @@ const DeleteBook = () => {
       .delete(`http://localhost:5555/books/${id}`)
       .then(() => {
         setLoading(false);
-        enqueueSnackbar('Book deleted successfully', { variant: 'success' });
+        enqueueSnackbar(`"${book.title}" deleted successfully`, { variant: 'success' });
         navigate('/');
       })
       .catch((error) => {
