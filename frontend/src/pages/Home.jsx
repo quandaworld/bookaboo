@@ -140,8 +140,8 @@ const Home = () => {
 
       <p className="mt-2 opacity-50 self-center">
         Copyright &copy; {new Date().getFullYear()}
-        <a href="https://github.com/quandaworld" target="_blank">
-          <strong> quandaworld</strong>
+        <a href="https://quannguyendev.com/" target="_blank">
+          <b> quannguyendev.com</b>
         </a>
       </p>
 
