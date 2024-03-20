@@ -11,6 +11,7 @@ import { useSnackbar } from 'notistack';
 
 const Home = () => {
   const [books, setBooks] = useState([]);
+  const [originalBooks, setOriginalBooks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showType, setShowType] = useState('table'); // Set default display to table
   const [sortOrder, setSortOrder] = useState('');
@@ -24,6 +25,7 @@ const Home = () => {
       .get('http://localhost:5555/books')
       .then((response) => {
         setBooks(response.data.data);
+        setOriginalBooks(response.data.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -34,11 +36,9 @@ const Home = () => {
 
   const sortBooks = (key, order = sortOrder) => {
     if (order === '') {
-      enqueueSnackbar('Please select sort order', { variant: 'warning' });
-      return;
+      return enqueueSnackbar('Please select sort order', { variant: 'warning' });
     } else if (key === '') {
-      enqueueSnackbar('Please select sort by', { variant: 'warning' });
-      return;
+      return enqueueSnackbar('Please select sort by', { variant: 'warning' });
     }
 
     const sortedBooks = [...books];
@@ -56,8 +56,26 @@ const Home = () => {
   };
 
   const filterBooks = (filterValue, filterKey) => {
-    const filteredBooks = [...books].filter(book => book[filterKey] === filterValue);
+    let filteredBooks;
+    
+    if (document.getElementById('filter_status').selectedIndex === 0 ||
+        document.getElementById('filter_format').selectedIndex === 0
+    ) {
+      filteredBooks = [...originalBooks];
+    } else {
+      filteredBooks = [...books]; 
+    }
+
+    filteredBooks = filteredBooks.filter(book => book[filterKey] === filterValue);
     setBooks(filteredBooks);
+  }
+
+  const reset = () => {
+    setBooks(originalBooks);
+    document.getElementById('sort_by').selectedIndex = 0;
+    document.getElementById('sort_order').selectedIndex = 0;
+    document.getElementById('filter_status').selectedIndex = 0;
+    document.getElementById('filter_format').selectedIndex = 0;
   }
 
   return (
@@ -68,6 +86,7 @@ const Home = () => {
           <div className='md:flex gap-3'>
             {/* Sort input */}
             <select
+              id='sort_by'
               className='border-2 text-sky-900 rounded-md'
               onChange={(e) => {
                 setSortBy(e.target.value);
@@ -82,6 +101,7 @@ const Home = () => {
               <option value='status'>Status</option>
             </select>
             <select
+              id='sort_order'
               className='border-2 text-sky-900 rounded-md'
               onChange={(e) => {
                 setSortOrder(e.target.value);
@@ -95,6 +115,7 @@ const Home = () => {
 
             {/* Filter input */}
             <select
+              id='filter_status'
               className='border-2 text-sky-900 rounded-md'
               onChange={(e) => filterBooks(e.target.value, 'status')}
             >
@@ -104,6 +125,7 @@ const Home = () => {
               <option value='Finished'>Finished</option>
             </select>
             <select
+              id='filter_format'
               className='border-2 text-sky-900 rounded-md'
               onChange={(e) => filterBooks(e.target.value, 'format')}
             >
@@ -114,7 +136,7 @@ const Home = () => {
             </select>
             <IoReloadCircle
               className='text-sky-800 text-3xl hover:text-sky-700 cursor-pointer'
-              onClick={() => window.location.reload()}
+              onClick={reset}
             />
           </div>
           <div className='flex items-center gap-4 text-sky-800'>
