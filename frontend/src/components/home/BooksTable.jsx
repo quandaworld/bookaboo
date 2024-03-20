@@ -5,8 +5,6 @@ import { FiEdit } from "react-icons/fi";
 import { ImInfo } from "react-icons/im";
 
 const BooksTable = ({ books }) => {
-  const [showModal, setShowModal] = useState(false);
-
   return (
     <table className='w-full border-separate border-spacing-2'>
       <thead>

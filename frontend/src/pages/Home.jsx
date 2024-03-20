@@ -6,11 +6,16 @@ import { BiSolidGridAlt } from 'react-icons/bi';
 import { PiListBulletsFill } from 'react-icons/pi';
 import BooksGrid from '../components/home/BooksGrid';
 import BooksTable from '../components/home/BooksTable';
+import { useSnackbar } from 'notistack';
 
 const Home = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showType, setShowType] = useState('table'); // Set default display to table
+  const [sortOrder, setSortOrder] = useState('');
+  const [sortBy, setSortBy] = useState('');
+  const [filterBy, setFilterBy] = useState('');
+  const { enqueueSnackbar } = useSnackbar();
 
   // Fetch book data, update component with fetched data, and track loading state
   useEffect(() => {
@@ -27,22 +32,106 @@ const Home = () => {
       });
   }, []);
 
+  const sortBooks = (key, order = sortOrder) => {
+    if (order === '') {
+      enqueueSnackbar('Please select sort order', { variant: 'warning' });
+      return;
+    } else if (key === '') {
+      enqueueSnackbar('Please select sort by', { variant: 'warning' });
+      return;
+    }
+
+    const sortedBooks = [...books];
+    if (key === 'pages') {
+      sortedBooks.sort((a, b) => a[key] - b[key]);
+    } else {
+      sortedBooks.sort((a, b) => a[key].toLowerCase() > b[key].toLowerCase() ? 1 : -1);
+    }
+
+    if (order === 'asc') {
+      setBooks(sortedBooks)
+    } else if (order === 'dsc') {
+      setBooks(sortedBooks.reverse());
+    }
+  };
+
+  const filterBooks = (filterValue) => {
+    const filteredBooks = [...books].filter(book => book[filterBy] === filterValue);
+    setBooks(filteredBooks);
+  }
+
   return (
     <div className='pt-4 pb-1 px-4 font-montserrat flex flex-col h-screen justify-between'>
       <div>
         <div className='p-1 flex justify-between items-center'>
           <h1 className='text-4xl my-8 font-semibold text-sky-900'>My Library Pro</h1>
-          <div className='flex items-center gap-0.5 text-sky-800'>
-            <PiListBulletsFill
-              className='cursor-pointer text-3xl hover:text-sky-700'
-              onClick={() => setShowType('table')}
-            />
-            <BiSolidGridAlt
-              className='cursor-pointer text-3xl hover:text-sky-700'
-              onClick={() => setShowType('grid')}
-            />
+          <div className='md:flex gap-3'>
+            {/* Sort input */}
+            <select
+              className='border-2 text-sky-900 rounded-md'
+              onChange={(e) => {
+                setSortOrder(e.target.value);
+                sortBooks(sortBy, e.target.value);
+              }}
+            >
+              <option value=''>Sort order</option>
+              <option value='asc'>Ascending</option>
+              <option value='dsc'>Descending</option>
+            </select>
+            <select
+              className='border-2 text-sky-900 rounded-md'
+              onChange={(e) => {
+                setSortBy(e.target.value);
+                sortBooks(e.target.value);
+              }}
+            >
+              <option value=''>Sort by</option>
+              <option value='title'>Title</option>
+              <option value='author'>Author</option>
+              <option value='format'>Format</option>
+              <option value='pages'>Pages</option>
+              <option value='status'>Status</option>
+            </select>
+
+            {/* Filter input */}
+            <select
+              className='border-2 text-sky-900 rounded-md'
+              onChange={(e) => {
+                setFilterBy('status');
+                filterBooks(e.target.value);
+              }}
+            >
+              <option value=''>Filter by status</option>
+              <option value='Reading'>Reading</option>
+              <option value='Unread'>Unread</option>
+              <option value='Finished'>Finished</option>
+            </select>
+            <select
+              className='border-2 text-sky-900 rounded-md'
+              onChange={(e) => {
+                setFilterBy('format');
+                filterBooks(e.target.value);
+              }}
+            >
+              <option value=''>Filter by format</option>
+              <option value='Printed'>Printed</option>
+              <option value='Ebook'>Ebook</option>
+              <option value='Audio'>Audio</option>
+            </select>
+          </div>
+          <div className='flex items-center gap-4 text-sky-800'>
+            <div className='flex'>
+              <PiListBulletsFill
+                className='cursor-pointer text-3xl hover:text-sky-700'
+                onClick={() => setShowType('table')}
+              />
+              <BiSolidGridAlt
+                className='cursor-pointer text-3xl hover:text-sky-700'
+                onClick={() => setShowType('grid')}
+              />
+            </div>
             <Link to='/books/add'>
-              <button className='bg-sky-800 text-white rounded-lg px-3 py-2 text-lg font-semibold ml-5 hover:bg-sky-700'>Add new book</button>
+              <button className='bg-sky-800 text-white rounded-lg px-3 py-2 text-lg font-semibold hover:bg-sky-700'>Add new book</button>
             </Link>
           </div>
         </div>
