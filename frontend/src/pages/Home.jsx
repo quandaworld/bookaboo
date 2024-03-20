@@ -4,6 +4,7 @@ import Spinner from '../components/Spinner';
 import { Link } from 'react-router-dom';
 import { BiSolidGridAlt } from 'react-icons/bi';
 import { PiListBulletsFill } from 'react-icons/pi';
+import { IoReloadCircle } from "react-icons/io5";
 import BooksGrid from '../components/home/BooksGrid';
 import BooksTable from '../components/home/BooksTable';
 import { useSnackbar } from 'notistack';
@@ -55,8 +56,9 @@ const Home = () => {
     }
   };
 
-  const filterBooks = (filterValue) => {
-    const filteredBooks = [...books].filter(book => book[filterBy] === filterValue);
+  const filterBooks = (filterValue, filterKey) => {
+    const filteredBooks = [...books].filter(book => book[filterKey] === filterValue);
+    console.log(filterBy, filterValue);
     setBooks(filteredBooks);
   }
 
@@ -67,17 +69,6 @@ const Home = () => {
           <h1 className='text-4xl my-8 font-semibold text-sky-900'>My Library Pro</h1>
           <div className='md:flex gap-3'>
             {/* Sort input */}
-            <select
-              className='border-2 text-sky-900 rounded-md'
-              onChange={(e) => {
-                setSortOrder(e.target.value);
-                sortBooks(sortBy, e.target.value);
-              }}
-            >
-              <option value=''>Sort order</option>
-              <option value='asc'>Ascending</option>
-              <option value='dsc'>Descending</option>
-            </select>
             <select
               className='border-2 text-sky-900 rounded-md'
               onChange={(e) => {
@@ -92,14 +83,22 @@ const Home = () => {
               <option value='pages'>Pages</option>
               <option value='status'>Status</option>
             </select>
+            <select
+              className='border-2 text-sky-900 rounded-md'
+              onChange={(e) => {
+                setSortOrder(e.target.value);
+                sortBooks(sortBy, e.target.value);
+              }}
+            >
+              <option value=''>Sort order</option>
+              <option value='asc'>Ascending</option>
+              <option value='dsc'>Descending</option>
+            </select>
 
             {/* Filter input */}
             <select
               className='border-2 text-sky-900 rounded-md'
-              onChange={(e) => {
-                setFilterBy('status');
-                filterBooks(e.target.value);
-              }}
+              onChange={(e) => filterBooks(e.target.value, 'status')}
             >
               <option value=''>Filter by status</option>
               <option value='Reading'>Reading</option>
@@ -108,16 +107,17 @@ const Home = () => {
             </select>
             <select
               className='border-2 text-sky-900 rounded-md'
-              onChange={(e) => {
-                setFilterBy('format');
-                filterBooks(e.target.value);
-              }}
+              onChange={(e) => filterBooks(e.target.value, 'format')}
             >
               <option value=''>Filter by format</option>
               <option value='Printed'>Printed</option>
               <option value='Ebook'>Ebook</option>
               <option value='Audio'>Audio</option>
             </select>
+            <IoReloadCircle
+              className='text-sky-800 text-3xl hover:text-sky-700 cursor-pointer'
+              onClick={() => window.location.reload()}
+            />
           </div>
           <div className='flex items-center gap-4 text-sky-800'>
             <div className='flex'>
