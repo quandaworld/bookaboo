@@ -15,7 +15,6 @@ const Home = () => {
   const [showType, setShowType] = useState('table'); // Set default display to table
   const [sortOrder, setSortOrder] = useState('');
   const [sortBy, setSortBy] = useState('');
-  const [filterBy, setFilterBy] = useState('');
   const { enqueueSnackbar } = useSnackbar();
 
   // Fetch book data, update component with fetched data, and track loading state
@@ -58,7 +57,6 @@ const Home = () => {
 
   const filterBooks = (filterValue, filterKey) => {
     const filteredBooks = [...books].filter(book => book[filterKey] === filterValue);
-    console.log(filterBy, filterValue);
     setBooks(filteredBooks);
   }
 
