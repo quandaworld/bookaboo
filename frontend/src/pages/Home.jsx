@@ -76,6 +76,8 @@ const Home = () => {
     document.getElementById('sort_order').selectedIndex = 0;
     document.getElementById('filter_status').selectedIndex = 0;
     document.getElementById('filter_format').selectedIndex = 0;
+    setSortBy('');
+    setSortOrder('');
   }
 
   return (
