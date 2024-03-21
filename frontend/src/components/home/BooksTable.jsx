@@ -6,12 +6,12 @@ import { ImInfo } from "react-icons/im";
 
 const BooksTable = ({ books, searchTitle }) => {
   return (
-    <table className='w-full border-separate border-spacing-2'>
+    <table className='w-full border-separate border-spacing-2 mb-8'>
       <thead>
         <tr className='h-8 bg-sky-200 text-sky-900'>
           <th className='rounded-md font-semibold'>No.</th>
-          <th className='rounded-md font-semibold'>Title</th>
-          <th className='rounded-md font-semibold max-md:hidden'>Author</th>
+          <th className='rounded-md font-semibold text-left pl-5'>Title</th>
+          <th className='rounded-md font-semibold text-left pl-5 max-md:hidden'>Author</th>
           <th className='rounded-md font-semibold max-md:hidden'>Format</th>
           <th className='rounded-md font-semibold max-md:hidden'>Pages</th>
           <th className='rounded-md font-semibold max-md:hidden'>Status</th>
@@ -30,10 +30,10 @@ const BooksTable = ({ books, searchTitle }) => {
             <td className='rounded-md text-center'>
               {index + 1}
             </td>
-            <td className='rounded-md text-center'>
+            <td className='rounded-md text-left pl-5'>
               {book.title}
             </td>
-            <td className='rounded-md text-center max-md:hidden'>
+            <td className='rounded-md text-left pl-5 max-md:hidden'>
               {book.author}
             </td>
             <td className='rounded-md text-center max-md:hidden'>
