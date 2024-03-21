@@ -1,12 +1,10 @@
 import express from "express";
+import { PORT, mongoDbUrl } from "./config.js";
 import mongoose from "mongoose";
 import bookRoute from "./routes/bookRoute.js";
 import cors from 'cors';
-import 'dotenv/config';
 
 const app = express();
-const url = process.env.mongoDbUrl || "mongodb://localhost:27017/";
-const port = process.env.PORT || 5000;
 
 // Middleware for parsing request body
 app.use(express.json());
@@ -26,13 +24,13 @@ app.use('/books', bookRoute);
 
 // Connecting to db
 mongoose
-  .connect(url)
+  .connect(mongoDbUrl)
   .then(() => {
     console.log('App connected to database');
 
     // only run express server if db connection is successful
-    app.listen(port, () => {
-      console.log(`App is listening to port: ${port}`);
+    app.listen(PORT, () => {
+      console.log(`App is listening to port: ${PORT}`);
     });
   })
   .catch((error) => {
