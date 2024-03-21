@@ -10,8 +10,8 @@ const BooksTable = ({ books, searchTitle }) => {
       <thead>
         <tr className='h-8 bg-sky-200 text-sky-900'>
           <th className='rounded-md font-semibold'>No.</th>
-          <th className='rounded-md font-semibold text-left pl-5'>Title</th>
-          <th className='rounded-md font-semibold text-left pl-5 max-md:hidden'>Author</th>
+          <th className='rounded-md font-semibold text-left px-5 max-md:px-3'>Title</th>
+          <th className='rounded-md font-semibold text-left px-5 max-md:px-3 max-md:hidden'>Author</th>
           <th className='rounded-md font-semibold max-md:hidden'>Format</th>
           <th className='rounded-md font-semibold max-md:hidden'>Pages</th>
           <th className='rounded-md font-semibold max-md:hidden'>Status</th>
@@ -30,10 +30,10 @@ const BooksTable = ({ books, searchTitle }) => {
             <td className='rounded-md text-center'>
               {index + 1}
             </td>
-            <td className='rounded-md text-left pl-5'>
+            <td className='rounded-md text-left px-5 max-md:px-3'>
               {book.title}
             </td>
-            <td className='rounded-md text-left pl-5 max-md:hidden'>
+            <td className='rounded-md text-left px-5 max-md:px-3 max-md:hidden'>
               {book.author}
             </td>
             <td className='rounded-md text-center max-md:hidden'>
@@ -47,7 +47,7 @@ const BooksTable = ({ books, searchTitle }) => {
             </td>
 
             {/* Actions column */}
-            <td className='rounded-md text-center'>
+            <td className='rounded-md text-center max-md:px-3'>
               <div className='flex justify-center items-center gap-x-4'>
                 <Link to={`/books/details/${book._id}`}>
                   <ImInfo className='text-xl text-green-700' />

@@ -86,14 +86,14 @@ const Home = () => {
   return (
     <div className='py-4 px-4 font-montserrat flex flex-col h-screen justify-between'>
       <div>
-        <div className='p-1 flex justify-between items-center'>
+        <div className='p-1 flex gap-2 justify-between items-center'>
           <h1 className='text-4xl my-8 font-bold text-sky-900'>My Library Pro</h1>
           <div className='flex gap-3'>
             <input
               id='search_bar'
               type="text"
               placeholder='Search by title...'
-              className='border-2 rounded-md px-1 w-[300px]'
+              className='border-2 rounded-md px-1 w-[300px] max-md:hidden'
               onChange={(e) => setSearchTitle(e.target.value)}
             />
             <SortFilter
