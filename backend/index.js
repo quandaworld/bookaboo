@@ -3,8 +3,20 @@ import { PORT, mongoDbUrl } from "./config.js";
 import mongoose from "mongoose";
 import bookRoute from "./routes/bookRoute.js";
 import cors from 'cors';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import * as path from 'path';
 
 const app = express();
+
+// Configuration for deployment
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+app.use(express.static(path.join(__dirname, 'dist')));
+app.get('/', (request, response) => {
+  request.sendFile(path.join(__dirname, 'dist/index.html'));
+})
 
 // Middleware for parsing request body
 app.use(express.json());
@@ -19,8 +31,6 @@ app.get('/', (request, response) => {
 
 // Run bookRoute for requests with prefix '/books'
 app.use('/books', bookRoute);
-
-// Run bookRoute for requests with prefix '/audiobooks'
 
 // Connecting to db
 mongoose
