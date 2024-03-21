@@ -65,7 +65,7 @@ const EditBook = () => {
       <HomeButton />
       <h1 className='text-3xl text-center mb-6 font-semibold'>Edit Book</h1>
       <div className='flex flex-col border-2 border-gray-500 rounded-xl w-[600px] px-4 mx-auto'>
-        <div className='my-4'>
+        <div className='my-2'>
           <label className='text-lg mr-4 text-gray-500'>Title</label>
           <input
             type='text'
@@ -74,7 +74,7 @@ const EditBook = () => {
             className='border border-gray-400 px-4 py-2 w-full'
           />
         </div>
-        <div className='my-4'>
+        <div className='my-2'>
           <label className='text-lg mr-4 text-gray-500'>Author</label>
           <input
             type='text'
@@ -83,7 +83,7 @@ const EditBook = () => {
             className='border border-gray-400 px-4 py-2 w-full '
           />
         </div>
-        <div className='my-4'>
+        <div className='my-2'>
           <label className='text-lg mr-4 text-gray-500'>Format</label>
           <select
             value={format}
@@ -96,7 +96,7 @@ const EditBook = () => {
             <option value='Audio'>Audio</option>
           </select>
         </div>
-        <div className='my-4'>
+        <div className='my-2'>
           <label className='text-lg mr-4 text-gray-500'>Pages</label>
           <input
             type='number'
@@ -105,7 +105,7 @@ const EditBook = () => {
             className='border border-gray-400 px-4 py-2 w-full '
           />
         </div>
-        <div className='my-4'>
+        <div className='my-2'>
           <label className='text-lg mr-4 text-gray-500'>Status</label>
           <select
             value={status}
@@ -118,7 +118,7 @@ const EditBook = () => {
             <option value='Finished'>Finished</option>
           </select>
         </div>
-        <div className='my-4'>
+        <div className='my-2'>
           <label className='text-lg mr-4 text-gray-500'>Notes</label>
           <textarea
             value={notes}
@@ -126,7 +126,7 @@ const EditBook = () => {
             className='border border-gray-400 px-4 py-2 w-full h-40'
           />
         </div>
-        <button className='p-2 bg-sky-800 m-6 rounded-lg text-lg text-white font-medium' onClick={handleEditBook}>
+        <button className='p-2 mt-6 mb-4 w-full bg-sky-800 rounded-lg text-lg self-center font-medium text-white' onClick={handleEditBook}>
           Save
         </button>
       </div>

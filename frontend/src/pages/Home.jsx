@@ -84,7 +84,7 @@ const Home = () => {
   }
 
   return (
-    <div className='pt-4 pb-1 px-4 font-montserrat flex flex-col h-screen justify-between'>
+    <div className='py-4 px-4 font-montserrat flex flex-col h-screen justify-between'>
       <div>
         <div className='p-1 flex justify-between items-center'>
           <h1 className='text-4xl my-8 font-bold text-sky-900'>My Library Pro</h1>

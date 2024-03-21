@@ -2,7 +2,7 @@ import BookCard from './BookCard';
 
 const BooksGrid = ({ books, searchTitle }) => {
   return (
-    <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+    <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-6'>
       {books.filter((book) => {
         if (searchTitle === '') {
           return book;

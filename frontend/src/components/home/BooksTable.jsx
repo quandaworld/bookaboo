@@ -6,7 +6,7 @@ import { ImInfo } from "react-icons/im";
 
 const BooksTable = ({ books, searchTitle }) => {
   return (
-    <table className='w-full border-separate border-spacing-2 mb-8'>
+    <table className='w-full border-separate border-spacing-2 mb-6 py-2'>
       <thead>
         <tr className='h-8 bg-sky-200 text-sky-900'>
           <th className='rounded-md font-semibold'>No.</th>
