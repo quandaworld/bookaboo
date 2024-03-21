@@ -4,7 +4,7 @@ import { CgTrash } from "react-icons/cg";
 import { FiEdit } from "react-icons/fi";
 import { ImInfo } from "react-icons/im";
 
-const BooksTable = ({ books }) => {
+const BooksTable = ({ books, searchTitle }) => {
   return (
     <table className='w-full border-separate border-spacing-2'>
       <thead>
@@ -19,7 +19,13 @@ const BooksTable = ({ books }) => {
         </tr>
       </thead>
       <tbody>
-        {books.map((book, index) => (
+        {books.filter((book) => {
+          if (searchTitle === '') {
+            return book;
+          } else if (book.title.toLowerCase().includes(searchTitle.toString().toLowerCase())) {
+            return book;
+          }
+        }).map((book, index) => (
           <tr key={book._id} className='h-8 bg-slate-100'>
             <td className='rounded-md text-center'>
               {index + 1}

@@ -16,6 +16,7 @@ const Home = () => {
   const [showType, setShowType] = useState('table'); // Set default display to table
   const [sortOrder, setSortOrder] = useState('');
   const [sortBy, setSortBy] = useState('');
+  const [searchTitle, setSearchTitle] = useState([]);
   const { enqueueSnackbar } = useSnackbar();
 
   // Fetch book data, update component with fetched data, and track loading state
@@ -57,13 +58,13 @@ const Home = () => {
 
   const filterBooks = (filterValue, filterKey) => {
     let filteredBooks;
-    
+
     if (document.getElementById('filter_status').selectedIndex === 0 ||
-        document.getElementById('filter_format').selectedIndex === 0
+      document.getElementById('filter_format').selectedIndex === 0
     ) {
       filteredBooks = [...originalBooks];
     } else {
-      filteredBooks = [...books]; 
+      filteredBooks = [...books];
     }
 
     filteredBooks = filteredBooks.filter(book => book[filterKey] === filterValue);
@@ -76,8 +77,10 @@ const Home = () => {
     document.getElementById('sort_order').selectedIndex = 0;
     document.getElementById('filter_status').selectedIndex = 0;
     document.getElementById('filter_format').selectedIndex = 0;
+    document.getElementById('search_bar').value = '';
     setSortBy('');
     setSortOrder('');
+    setSearchTitle('');
   }
 
   return (
@@ -85,15 +88,24 @@ const Home = () => {
       <div>
         <div className='p-1 flex justify-between items-center'>
           <h1 className='text-4xl my-8 font-semibold text-sky-900'>My Library Pro</h1>
-          <SortFilter
-            sortBooks={sortBooks}
-            sortOrder={sortOrder}
-            setSortOrder={setSortOrder}
-            sortBy={sortBy}
-            setSortBy={setSortBy}
-            filterBooks={filterBooks}
-            reset={reset}
-          />
+          <div className='flex gap-3'>
+            <input
+              id='search_bar'
+              type="text"
+              placeholder='Search by title...'
+              className='border-2 rounded-md px-1 w-[500px]'
+              onChange={(e) => setSearchTitle(e.target.value)}
+            />
+            <SortFilter
+              sortBooks={sortBooks}
+              sortOrder={sortOrder}
+              setSortOrder={setSortOrder}
+              sortBy={sortBy}
+              setSortBy={setSortBy}
+              filterBooks={filterBooks}
+              reset={reset}
+            />
+          </div>
           <div className='flex items-center gap-4 text-sky-800'>
             <div className='flex'>
               <PiListBulletsFill
@@ -110,7 +122,7 @@ const Home = () => {
             </Link>
           </div>
         </div>
-        {loading ? <Spinner /> : showType === 'table' ? <BooksTable books={books} /> : <BooksGrid books={books} />}
+        {loading ? <Spinner /> : showType === 'table' ? <BooksTable books={books} searchTitle={searchTitle} /> : <BooksGrid books={books} searchTitle={searchTitle} />}
       </div>
 
       <p className="mt-2 opacity-50 self-center">
