@@ -123,6 +123,17 @@ const Home = () => {
             </Link>
           </div>
         </div>
+        
+        {/* Add search bar for mobile UI */}
+        <div className='flex justify-center sm:hidden'>
+          <input
+            id='search_bar'
+            type="text"
+            placeholder='Search by title...'
+            className='border-2 rounded-md px-1 max-w-full w-[300px]'
+            onChange={(e) => setSearchTitle(e.target.value)}
+          />
+        </div>
         {loading ? <Spinner /> : showType === 'table' ? <BooksTable books={books} searchTitle={searchTitle} /> : <BooksGrid books={books} searchTitle={searchTitle} />}
       </div>
 
