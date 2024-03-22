@@ -1,13 +1,14 @@
 import express from "express";
-import { PORT, mongoDbUrl } from "./config.js";
 import mongoose from "mongoose";
 import bookRoute from "./routes/bookRoute.js";
 import cors from 'cors';
 import { fileURLToPath } from 'url';
 import path from 'path';
-// import * as path from 'path';
+import 'dotenv/config';
 
 const app = express();
+const uri = process.env.MONGODB_URI;
+const port = process.env.PORT;
 
 // Resolving dirname for ES module
 const __filename = fileURLToPath(import.meta.url);
@@ -35,13 +36,13 @@ app.use('/books', bookRoute);
 
 // Connecting to db
 mongoose
-  .connect(mongoDbUrl)
+  .connect(uri)
   .then(() => {
     console.log('App connected to database');
 
     // only run express server if db connection is successful
-    app.listen(PORT, () => {
-      console.log(`App is listening to port: ${PORT}`);
+    app.listen(port, () => {
+      console.log(`App is listening to port: ${port}`);
     });
   })
   .catch((error) => {
