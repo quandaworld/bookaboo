@@ -22,8 +22,9 @@ const Home = () => {
   // Fetch book data, update component with fetched data, and track loading state
   useEffect(() => {
     setLoading(true);
+    const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:5555' : '';
     axios
-      .get('/books')
+      .get(`${baseUrl}/books`)
       .then((response) => {
         setBooks(response.data.data);
         setOriginalBooks(response.data.data);

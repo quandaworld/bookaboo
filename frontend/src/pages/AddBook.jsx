@@ -26,8 +26,9 @@ const AddBook = () => {
       notes,
     };
     setLoading(true);
+    const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:5555' : '';
     axios
-      .post('/books', data)
+      .post(`${baseUrl}/books`, data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Book added successfully', { variant: 'success' });
@@ -49,7 +50,7 @@ const AddBook = () => {
       <HomeButton />
       <h1 className='text-3xl text-center mb-6 font-semibold'>Add Book</h1>
       {loading ? <Spinner /> : ''}
-      <div className='flex flex-col border-2 border-gray-500 rounded-xl w-[600px] px-4 mx-auto'>
+      <div className='flex flex-col border-2 border-gray-500 rounded-xl w-[600px] max-w-full px-4 mx-auto'>
         <div className='my-2'>
           <label className='text-lg mr-4 text-gray-500'>
             Title

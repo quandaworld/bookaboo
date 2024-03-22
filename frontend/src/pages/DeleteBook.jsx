@@ -11,11 +11,12 @@ const DeleteBook = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { enqueueSnackbar } = useSnackbar();
+  const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:5555' : '';
 
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`/books/${id}`)
+      .get(`${baseUrl}/books/${id}`)
       .then((response) => {
         setBook(response.data);
         setLoading(false);
@@ -29,7 +30,7 @@ const DeleteBook = () => {
   const handleDeleteBook = () => {
     setLoading(true);
     axios
-      .delete(`/books/${id}`)
+      .delete(`${baseUrl}/books/${id}`)
       .then(() => {
         setLoading(false);
         enqueueSnackbar(`"${book.title}" deleted successfully`, { variant: 'success' });
@@ -51,7 +52,7 @@ const DeleteBook = () => {
         <Spinner />
       ) : (
         <div className='flex flex-col gap-10'>
-          <div className='flex flex-col border-2 border-gray-500 rounded-xl w-[600px] px-4 mx-auto text-lg' >
+          <div className='flex flex-col border-2 border-gray-500 rounded-xl w-[600px] max-w-full px-4 mx-auto text-lg' >
             <div className='my-4'>
               <span className='mr-4 text-gray-500'>Author</span>
               <span>{book.author}</span>
@@ -82,7 +83,7 @@ const DeleteBook = () => {
             </div>
           </div>
 
-          <div className='flex flex-col items-center border-2 border-gray-500 rounded-xl w-[600px] p-4 mx-auto'>
+          <div className='flex flex-col items-center border-2 border-gray-500 rounded-xl w-[600px] max-w-full p-4 mx-auto'>
             <h3 className='text-2xl font-medium'>Are you sure you want to delete this book?</h3>
 
             <button

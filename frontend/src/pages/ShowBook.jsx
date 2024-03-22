@@ -11,8 +11,9 @@ const ShowBook = () => {
 
   useEffect(() => {
     setLoading(true);
+    const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:5555' : '';
     axios
-      .get(`/books/${id}`)
+      .get(`${baseUrl}/books/${id}`)
       .then((response) => {
         setBook(response.data);
         setLoading(false);
@@ -31,7 +32,7 @@ const ShowBook = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <div className='flex flex-col border-2 border-gray-500 rounded-xl w-[600px] px-4 mx-auto text-lg' >
+        <div className='flex flex-col border-2 border-gray-500 rounded-xl w-[600px] max-w-full px-4 mx-auto text-lg' >
           <div className='my-4'>
             <span className='mr-4 text-gray-500'>Author</span>
             <span>{book.author}</span>
