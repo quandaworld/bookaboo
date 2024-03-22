@@ -23,7 +23,7 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://localhost:5555/books')
+      .get('/books')
       .then((response) => {
         setBooks(response.data.data);
         setOriginalBooks(response.data.data);
