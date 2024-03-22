@@ -27,7 +27,7 @@ const AddBook = () => {
     };
     setLoading(true);
     axios
-      .post('/books', data)
+      .post(('http://localhost:5555/books' || '/books'), data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Book added successfully', { variant: 'success' });
