@@ -56,7 +56,11 @@ const EditBook = () => {
       })
       .catch((error) => {
         setLoading(false);
-        enqueueSnackbar('Error', { variant: 'error' });
+        if (error.response.status === 500) {
+          enqueueSnackbar(`"${data.title}" already exists in library`, { variant: 'error' });
+        } else if (error.response.status === 400) {
+          enqueueSnackbar('Please fill out all required fields', { variant: 'error' });
+        }
         console.log(error);
       });
   };

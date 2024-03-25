@@ -31,7 +31,7 @@ const AddBook = () => {
       .post(`${baseUrl}/books`, data)
       .then(() => {
         setLoading(false);
-        enqueueSnackbar('Book added successfully', { variant: 'success' });
+        enqueueSnackbar(`"${data.title}" added successfully`, { variant: 'success' });
         navigate('/');
       })
       .catch((error) => {
