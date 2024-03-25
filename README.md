@@ -21,6 +21,9 @@ Cards View - Single Book
 Search - Sort - Filter Books
 ![App Screenshot](/screenshots/Screen%20Shot%202024-03-23%20at%2012.04.23%20AM.png)
 
+Fully mobile responsive
+![App Screenshot](/screenshots/Screen%20Shot%202024-03-25%20at%2011.46.12%20AM.png)
+
 
 ## Demo
 
@@ -35,8 +38,8 @@ Search - Sort - Filter Books
 - Ascending and descending sort by book title, author, format, number of pages, reading status
 - Filter books by reading status or book formats
 - Individual notes for each book
-- Books data is stored permanently in MongoDB Atlas
-- Display stack notifications when errors (duplicated books, missing required fields) happens, or when adding, editing, deleting books successfully
+- Books data is stored consistently in MongoDB Atlas
+- Display stack notifications when errors (duplicated books, missing required fields) happen, or when adding, editing, deleting books successfully
 - Mobile responsive design
 
 
@@ -47,10 +50,10 @@ Search - Sort - Filter Books
 
 ## Tech Stack
 
-MongoDB, Express, React, Tailwind CSS, and Node.js.
+MongoDB Atlas, Express, React, Tailwind CSS, Node.js, and Vite.
 
 
-## Tools and Technologies
+## Tools and Other Technologies
 
-VS Code, Render, Postman, Mockaroo, and Vite.
+VS Code, Render, Postman, and Mockaroo.
 
