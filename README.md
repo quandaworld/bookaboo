@@ -1,5 +1,5 @@
 
-# My Library Pro
+# Bookaboo
 
 My friend, an avid reader, frequently had problems with organizing and tracking his extensive book collection. He was often frustrated over not having a centralized system to record what books he owned and monitor his progress through each one. To help him with this issue, I set out to create a user-friendly platform for him. The goal was to design a simple yet effective solution that would allow him to catalog his books, update reading statuses, and manage his collection efficiently.
 

@@ -4,6 +4,14 @@ import Spinner from '../components/Spinner';
 import { Link } from 'react-router-dom';
 import { BiSolidGridAlt } from 'react-icons/bi';
 import { PiListBulletsFill } from 'react-icons/pi';
+import { BiSolidBookAdd } from "react-icons/bi";
+import { IoMdAddCircleOutline } from "react-icons/io";
+import { VscDiffAdded } from "react-icons/vsc";
+import { IoAdd } from "react-icons/io5";
+import { MdOutlineAddBox } from "react-icons/md";
+import { CgAddR } from "react-icons/cg";
+
+
 import BooksGrid from '../components/home/BooksGrid';
 import BooksTable from '../components/home/BooksTable';
 import SortFilter from '../components/home/SortFilter';
@@ -88,7 +96,7 @@ const Home = () => {
     <div className='py-4 px-4 font-montserrat flex flex-col h-screen justify-between'>
       <div>
         <div className='p-1 flex gap-2 justify-between items-center'>
-          <h1 className='text-4xl my-8 font-bold text-sky-900'>My Library Pro</h1>
+          <h1 className='text-5xl my-8 font-bold text-sky-900 max-md:text-4xl'>bookaboo</h1>
           <div className='flex gap-3'>
             <input
               id='search_bar'
@@ -107,8 +115,8 @@ const Home = () => {
               reset={reset}
             />
           </div>
-          <div className='flex items-center gap-4 text-sky-800'>
-            <div className='flex'>
+          <div className='flex items-center gap-4'>
+            <div className='flex text-sky-800 max-md:hidden'>
               <PiListBulletsFill
                 className='cursor-pointer text-3xl hover:text-sky-700'
                 onClick={() => setShowType('table')}
@@ -119,13 +127,16 @@ const Home = () => {
               />
             </div>
             <Link to='/books/add'>
-              <button className='bg-sky-800 text-white rounded-lg px-3 py-2 text-lg font-semibold hover:bg-sky-700'>Add new book</button>
+              <button className='max-md:hidden bg-sky-800 text-white rounded-lg px-3 py-2 text-lg font-semibold hover:bg-sky-700'>Add new book</button>
+              <CgAddR
+                className='cursor-pointer text-4xl text-sky-900 hover:text-sky-700 md:hidden'
+              />
             </Link>
           </div>
         </div>
 
         {/* Add search bar for mobile UI */}
-        <div className='flex justify-center sm:hidden'>
+        <div className='flex justify-center gap-3 sm:hidden'>
           <input
             id='search_bar'
             type="text"
@@ -133,6 +144,16 @@ const Home = () => {
             className='border-2 rounded-md px-1 w-full'
             onChange={(e) => setSearchTitle(e.target.value)}
           />
+          <div className='flex text-sky-800'>
+              <PiListBulletsFill
+                className='cursor-pointer text-3xl hover:text-sky-700'
+                onClick={() => setShowType('table')}
+              />
+              <BiSolidGridAlt
+                className='cursor-pointer text-3xl hover:text-sky-700'
+                onClick={() => setShowType('grid')}
+              />
+            </div>
         </div>
         {loading ? <Spinner /> : showType === 'table' ? <BooksTable books={books} searchTitle={searchTitle} /> : <BooksGrid books={books} searchTitle={searchTitle} />}
       </div>
