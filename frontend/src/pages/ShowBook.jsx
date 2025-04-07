@@ -7,7 +7,28 @@ import Spinner from '../components/Spinner';
 const ShowBook = () => {
   const [book, setBook] = useState({});
   const [loading, setLoading] = useState(false);
+  const [coverUrl, setCoverUrl] = useState('');
   const { id } = useParams();
+
+  // Fetch book cover from Google Books API
+  const fetchBookCover = async (title, author) => {
+    try {
+      const response = await axios.get(
+        `https://www.googleapis.com/books/v1/volumes?q=intitle:${encodeURIComponent(
+          title
+        )}+inauthor:${encodeURIComponent(author)}&maxResults=1`
+      );
+      
+      if (response.data.items && response.data.items.length > 0) {
+        const bookInfo = response.data.items[0].volumeInfo;
+        if (bookInfo.imageLinks && bookInfo.imageLinks.thumbnail) {
+          setCoverUrl(bookInfo.imageLinks.thumbnail);
+        }
+      }
+    } catch (error) {
+      console.log('Error fetching book cover:', error);
+    }
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -17,6 +38,10 @@ const ShowBook = () => {
       .then((response) => {
         setBook(response.data);
         setLoading(false);
+        // Fetch book cover after getting book details
+        if (response.data.title && response.data.author) {
+          fetchBookCover(response.data.title, response.data.author);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -33,6 +58,15 @@ const ShowBook = () => {
         <Spinner />
       ) : (
         <div className='flex flex-col border-2 border-gray-500 rounded-xl w-[600px] max-w-full px-4 mx-auto text-lg' >
+          {coverUrl && (
+            <div className='my-4 flex justify-center'>
+              <img 
+                src={coverUrl} 
+                alt={`Cover of ${book.title}`} 
+                className='h-64 object-contain rounded shadow-md'
+              />
+            </div>
+          )}
           <div className='my-4'>
             <span className='mr-4 text-gray-500'>Author</span>
             <span>{book.author}</span>
